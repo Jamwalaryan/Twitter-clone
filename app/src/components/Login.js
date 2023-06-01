@@ -4,6 +4,8 @@ import { Form, Alert } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import GoogleButton from "react-google-button";
 import { useUserAuth } from "../context/UserAuthContext";
+import './CSS/Login.css'
+import TwitterIcon from "@material-ui/icons/Twitter";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -34,12 +36,22 @@ const Login = () => {
   };
 
   return (
-    <>
-      <div className="p-4 box">
-        <h2 className="mb-3">Firebase Auth Login</h2>
+    <div className="login-container">
+      <div className="login-box">
+      <TwitterIcon className="login__twitterIcon" style={{width:"100px"}}/>
+        <h2 className="mb-3">Twitter Login</h2>
+        <hr/>
+        <div>
+          <GoogleButton
+            className="g-btn"
+            type="dark"
+            onClick={handleGoogleSignIn}
+          />
+        </div>
+       <hr/>
         {error && <Alert variant="danger">{error}</Alert>}
         <Form onSubmit={handleSubmit}>
-          <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Group className="mb-3 input" controlId="formBasicEmail">
             <Form.Control
               type="email"
               placeholder="Email address"
@@ -47,7 +59,7 @@ const Login = () => {
             />
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Group className="mb-3 input" controlId="formBasicPassword">
             <Form.Control
               type="password"
               placeholder="Password"
@@ -62,18 +74,12 @@ const Login = () => {
           </div>
         </Form>
         <hr />
-        <div>
-          <GoogleButton
-            className="g-btn"
-            type="dark"
-            onClick={handleGoogleSignIn}
-          />
-        </div>
-      </div>
-      <div className="p-4 box mt-3 text-center">
+        <div className="signup-bar">
         Don't have an account? <Link to="/signup">Sign up</Link>
       </div>
-    </>
+      </div>
+      
+    </div>
   );
 };
 

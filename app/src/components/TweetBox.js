@@ -1,36 +1,32 @@
-import React, { useState } from "react";
+import React, { useState , useRef} from "react";
 import "./CSS/TweetBox.css";
 import { Avatar, Button } from "@material-ui/core";
-import { db } from "../firebase";
 
 function TweetBox() {
   const [tweetMessage, setTweetMessage] = useState("");
   const [tweetImage, setTweetImage] = useState("");
+  const [ msg , setmsg] = useState("")
+  const hsRef = useRef(msg)
 
-  const sendTweet = (e) => {
-    e.preventDefault();
 
-    db.collection("posts").add({
-      displayName: "Rafeh Qazi",
-      username: "cleverqazi",
-      verified: true,
-      text: tweetMessage,
-      image: tweetImage,
-      avatar:
-        "https://kajabi-storefronts-production.global.ssl.fastly.net/kajabi-storefronts-production/themes/284832/settings_images/rLlCifhXRJiT0RoN2FjK_Logo_roundbackground_black.png",
-    });
-
-    setTweetMessage("");
-    setTweetImage("");
+  const sendTweet = () => {
+   setmsg(hsRef.current+" " +tweetMessage)
+   setTweetMessage("")
+    
   };
 
   return (
+    <>
     <div className="tweetBox">
-      <form>
+      <form onSubmit={sendTweet}>
         <div className="tweetBox__input">
-          <Avatar src="https://kajabi-storefronts-production.global.ssl.fastly.net/kajabi-storefronts-production/themes/284832/settings_images/rLlCifhXRJiT0RoN2FjK_Logo_roundbackground_black.png" />
+          <Avatar src="https://pbs.twimg.com/profile_images/1621811810885312513/UctA5r8v_400x400.jpg" />
           <input
-            onChange={(e) => setTweetMessage(e.target.value)}
+            onChange={(e) => {
+              setTweetMessage(e.target.value)
+              
+            
+            }}
             value={tweetMessage}
             placeholder="What's happening?"
             type="text"
@@ -41,18 +37,20 @@ function TweetBox() {
           onChange={(e) => setTweetImage(e.target.value)}
           className="tweetBox__imageInput"
           placeholder="Optional: Enter image URL"
-          type="text"
+          type="file"
         />
-
+        
         <Button
-          onClick={sendTweet}
-          type="submit"
+         onClick={sendTweet}
           className="tweetBox__tweetButton"
         >
           Tweet
         </Button>
       </form>
+
+      
     </div>
+    <div style={{width:"30vw" , height:"10vh" ,border:"3px solid white"}}>{msg} </div></>
   );
 }
 

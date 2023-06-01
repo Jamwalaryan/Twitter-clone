@@ -1,5 +1,6 @@
 .post {
     width:100%;
+    margin:20px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -8,13 +9,16 @@
   }
   .user-div{
     display: flex;
+    width:100%;
+    align-items: center;
   }
-  .user-div>img{
+  .user-div img{
     border-radius: 50%;
     margin:10px;
-    width:100px;
+    width:50px;
+    height:50px;
   }
-  .post img{
+  #tweet-img{
     width:90%;
   }
   /* .post__body {

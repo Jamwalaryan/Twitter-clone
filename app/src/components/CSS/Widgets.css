@@ -4,22 +4,29 @@
   
   .widgets__input {
     display: flex;
+    border:1px solid white;
+    border-radius: 10px;
     align-items: center;
     background-color: var(--twitter-background);
     padding: 10px;
     border-radius: 20px;
     margin-top: 10px;
-     margin-left: 20px; 
+    margin-left: 20px; 
   }
   
   .widgets__input > input {
-    border: 1px solid white;
-    border-left:none;
+    margin-left: 17px;
+    border:none;
     background-color: var(--twitter-background);
   }
   
   .widgets__searchIcon {
     color: rgb(255, 255, 255);
+    /* border:1px solid white;
+    border-right: none;
+    border-radius: 0px 0px 10px 10px;
+    padding:10px; */
+
   }
   
   .widgets__widgetContainer {

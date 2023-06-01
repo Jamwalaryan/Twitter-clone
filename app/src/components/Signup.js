@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Form, Alert } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { useUserAuth } from "../context/UserAuthContext";
+import TwitterIcon from "@material-ui/icons/Twitter";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -23,9 +24,12 @@ const Signup = () => {
   };
 
   return (
-    <>
-      <div className="p-4 box">
-        <h2 className="mb-3">Firebase Auth Signup</h2>
+    <div className="login-container">
+      <div className="login-box">
+      <TwitterIcon className="login__twitterIcon" style={{width:"100px"}}/>
+        
+        <h2 className="mb-3">Twitter Signup</h2>
+       <hr/>
         {error && <Alert variant="danger">{error}</Alert>}
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -50,11 +54,13 @@ const Signup = () => {
             </Button>
           </div>
         </Form>
-      </div>
-      <div className="p-4 box mt-3 text-center">
+        <hr />
+        <div className="signup-bar">
         Already have an account? <Link to="/">Log In</Link>
       </div>
-    </>
+      </div>
+      
+    </div>
   );
 };
 
